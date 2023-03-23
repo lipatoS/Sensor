@@ -1,0 +1,31 @@
+@startuml
+class app.ObserverPatternDemo {
++ {static} void main(String[])
+}
+class app.Indicator {
++ {static} String indicateColor(int)
++ {static} String indicateWeight(int)
+}
+class app.WeightSensor {
++ void update()
+}
+class app.ColorSensor {
++ void update()
+}
+class app.Substance {
+- List<Sensor> sensors
+- int state
++ int getState()
++ void setState(int)
++ void attach(Sensor)
++ void notifyAllObservers()
+}
+abstract class app.Sensor {
+# Substance substance
++ {abstract}void update()
+}
+
+
+app.Sensor <|-- app.WeightSensor
+app.Sensor <|-- app.ColorSensor
+@enduml
